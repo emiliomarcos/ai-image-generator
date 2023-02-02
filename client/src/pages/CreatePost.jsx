@@ -40,8 +40,31 @@ export default function CreatePost() {
     }
   }
 
-  function handleSubmit() {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
+    if (form.prompt && form.photo) {
+      setLoading(true);
+
+      try {
+        const response = await fetch('http://localhost:8080/api/v1/post', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(form)
+        })
+
+        await response.json();
+        navigate('/');
+      } catch (error) {
+        alert(error)
+      } finally {
+        setLoading(false);
+      }
+    } else {
+      alert('Please enter a prompt and generate an image');
+    }
   }
 
   function handleChange(e) {
@@ -108,7 +131,7 @@ export default function CreatePost() {
             When you create what you envisioned, share it with the world
           </p>
           <button type="submit" className="mt-3 text-white bg-[#6469ff] font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center">
-              {loading ? "Sharing..." : "Share with the world"}
+            {loading ? "Sharing..." : "Share"}
           </button>
         </div>
       </form>
