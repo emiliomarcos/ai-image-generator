@@ -7,7 +7,7 @@ export default function Card({ _id, name, prompt, photo }) {
     <div className="rounder-xl group relative shadow-card hover:shadow-cardhover card">
       <img className="w-full h-auto object-cover rounder-xl" src={photo} alt={prompt} />
       <div className="group-hover:flex flex-col max-h-[94.5%] hidden absolute bottom-0 left-0 right-0 bg-[#10131f] m-2 p-4 rounded-md">
-        <p className="text-white text-md overflow-y-auto prompt">{prompt}</p>
+        <p className="text-white text-md overflow-y-auto my-2 prompt">{prompt}</p>
         <div className="empty-5 flex justify-between items-center gap-2">
           <div className="flex items-center gap-2">
             <div className="w-7 h-7 rounded-full object-cover bg-green-700 flex justify-center items-center text-white text-xs font-bold">
